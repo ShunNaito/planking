@@ -1,0 +1,40 @@
+{
+  "name": "cameratest",
+  "description": "Doing stuff",
+  "activities": {
+    "view": {
+      "filters": {
+        "type": "url",
+        "url": {
+          "required": true,
+          "regexp":"/^https?:/"
+        }
+      }
+    }
+  },
+
+  "launch_path":"/start.html",
+  "developer":{
+   "name":"ric telecom",
+   "url":"http://www.ric.cp.jp/book/contents/book_921.html"
+  },
+
+   "locales":{
+    "en-US":{
+      "name":"cameratest",
+      "description": "Firefox OS book's 1st app"
+      }
+   },
+
+	"default_locale":"en-US",
+	"icons":{
+    "128":"/style/icons/icon.png"
+	},
+	"permissions": {
+      "geolocation": {
+         "description": "Required to schedule notifications"
+      }
+  },
+  "csp":
+    "default-src *; script-src 'self', 'facebook.com'; object-src 'none'; style-src 'self'"
+}
