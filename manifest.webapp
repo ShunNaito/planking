@@ -1,6 +1,6 @@
 {
-  "name": "cameratest",
-  "description": "Doing stuff",
+  "name": "planking",
+  "description": "plankingapp",
   "activities": {
     "view": {
       "filters": {
@@ -15,16 +15,16 @@
 
   "launch_path":"/start.html",
   "developer":{
-   "name":"ric telecom",
-   "url":"http://www.ric.cp.jp/book/contents/book_921.html"
+    "name":"planking_team",
+    "url":"http://www.ric.cp.jp/book/contents/book_921.html"
   },
 
-   "locales":{
+  "locales":{
     "en-US":{
-      "name":"cameratest",
-      "description": "Firefox OS book's 1st app"
-      }
-   },
+      "name":"planking",
+      "description": "plankingapp"
+    }
+  },
 
 	"default_locale":"en-US",
 	"icons":{
