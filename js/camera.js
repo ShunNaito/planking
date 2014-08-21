@@ -1,23 +1,14 @@
-<html>
-<head>
-    <meta charset="utf-8">
-	<title>現在地の表示</title>
-    <link rel="stylesheet" type="text/css" href="css/map.css"  />
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry"></script>
-    <script type="text/javascript">
-
-    var message;
+	var message;
     var cityCircle;
-
+  
     // 観光名所の位置情報と人気度
     var citymap = {};
-
+    
     citymap['総情'] = {
       center: new google.maps.LatLng(34.878025, 135.576926),//緯度,経度
       population: 1050
       };
-
+      
     citymap['USJ'] = {
       center: new google.maps.LatLng(34.664722, 135.433056),//緯度,経度
       population: 1050
@@ -84,8 +75,8 @@
     	document.getElementById("area_name").innerHTML = message;
     }
 
-
-
+	
+	
     // ( 3 )Google Map API を使い、地図を読み込み
     function initialize(x,y) {
     	document.getElementById("area_name").innerHTML
@@ -95,19 +86,21 @@
         //var myLatlng = new google.maps.LatLng(x,y);
         var myLatlng = new google.maps.LatLng(34.878025, 135.576926);
         var distance = google.maps.geometry.spherical.computeDistanceBetween(citymap['総情'] ['center'], myLatlng);
-
+       
         var point = 0;
         if(distance<50){
         point = 100;
         }
         console.log(point);
-        alert(point);
+         //alert(point);
+		document.getElementById("area_name").innerHTML = point;
 
 
+              
     }
+	
 
-
-
+    
     function callPickActivity() {//写真撮る前段階（カメラを選ぶ段階）
         if (MozActivity) {
             var pick = new MozActivity({
@@ -120,10 +113,3 @@
             pick.onerror = pickImageError;
         }
     }
-    </script>
-</head>
-<body onload="start_func()">
-	<canvas id="canvassample" width="320" height="480"></canvas>
-	<div id="area_name"></div>
-</body>
-</html>

@@ -1,6 +1,6 @@
 var message;
 var cityCircle;
-var result = loadcsv2('./original_planking.csv'); //CSVのデータから緯度を取得する
+var result = loadcsv2('./csvdata/original_planking.csv'); //CSVのデータから緯度を取得する
 
 // 観光名所の位置情報と人気度
 var citymap = new Array();
@@ -46,7 +46,9 @@ function errorCallback(error) {
 function initialize(x,y) {
 
     // Geolocationで取得した座標を代入
-    var myLatlng = new google.maps.LatLng(x,y);
+    // FirefoxOS端末及びシミュレータが現在地をただしくとれないため一時的に固定
+    // var myLatlng = new google.maps.LatLng(x,y);
+    var myLatlng = new google.maps.LatLng(34.878025, 135.576926);
 
     var mapOptions = {
     	zoom: 17,
