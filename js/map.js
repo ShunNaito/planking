@@ -1,6 +1,7 @@
 var message;
 var cityCircle;
-var result = loadcsv2('./csvdata/original_planking.csv'); //CSVのデータから緯度を取得する
+//CSVのデータから緯度を取得する
+var result = loadcsv2('./csvdata/original_planking.csv');
 
 // 観光名所の位置情報と人気度
 var citymap = new Array();
@@ -21,10 +22,10 @@ function start_func(){
 // ( 1 )位置情報を取得します。
 function get_location(){
 	if (navigator.geolocation) {
-    // 現在の位置情報取得を実施 正常に位置情報が取得できると、
-    // successCallbackがコールバックされます。
-    navigator.geolocation.getCurrentPosition
-    (successCallback,errorCallback);
+        // 現在の位置情報取得を実施 正常に位置情報が取得できると、
+        // successCallbackがコールバックされます。
+        navigator.geolocation.getCurrentPosition
+        (successCallback,errorCallback);
     } else {
         console.log("error")
     }
@@ -68,14 +69,14 @@ function initialize(x,y) {
     // ノート: 人口に基づいてサークルのエリアをスケールする
     for (var city in citymap) {
         var populationOptions = {
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8, //透明度
-          strokeWeight: 2,
-          fillColor: '#FF0000',
-          fillOpacity: 0.35,
-          map: map,
-          center: citymap[city].center,
-          radius: Math.sqrt(citymap[city].population) * 50
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8, //透明度
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            center: citymap[city].center,
+            radius: Math.sqrt(citymap[city].population) * 50
         };
         // マップへcityのための円を加える
         cityCircle = new google.maps.Circle(populationOptions);
