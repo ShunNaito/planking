@@ -22,7 +22,8 @@ function pickImageError() {
     console.log("error!!!!");
 }
 
-function imagePicked() {//写真を撮ってキャンバス上に描画
+function imagePicked() {
+	//写真を撮ってキャンバス上に描画
     var url = window.URL.createObjectURL(this.result.blob);
     var photo = new Image();
     photo.src = url;
@@ -66,15 +67,32 @@ function initialize(x,y) {
 
     // Geolocationで取得した座標を代入
     // デバッグのためUSJで固定
-    var myLatlng = new google.maps.LatLng(34.664722,135.433056);
+    var myLatlng = new google.maps.LatLng(34.878025, 135.576926);
     //var myLatlng = new google.maps.LatLng(x,y);
-    var distance = google.maps.geometry.spherical.computeDistanceBetween(citymap[0].center, myLatlng);
+	
+	var min;
+	var count;
+	
+	for( var i = 0; i < citymap.length-1; i++){
+		var distance = google.maps.geometry.spherical.computeDistanceBetween(citymap[i].center, myLatlng);
+		if( i == 0 ){
+			min = distance;
+			count = i;
+   		 } else {
+   		 	if( min > distance ){
+   		 		min = distance;
+   		 		count = i;
+   		 	}
+   		 }
+   	}
+   		 
+   		 alert(citymap[count].population);
+   		 
 
     var point = 0;
     if(distance<50){
       point = 100;
     }
-     alert(point);
      document.getElementById("area_name").innerHTML = point;
 
 
