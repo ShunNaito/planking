@@ -1,30 +1,18 @@
 var message;
 var cityCircle;
+//CSVのデータから緯度を取得する
+var result = loadcsv2('./csvdata/original_planking.csv');
 
 // 観光名所の位置情報と人気度
-var citymap = {};
+var citymap = new Array();
 
-citymap['総情'] = {
-  center: new google.maps.LatLng(34.878025, 135.576926),//緯度,経度
-  population: 1050
-  };
-
-citymap['USJ'] = {
-  center: new google.maps.LatLng(34.664722, 135.433056),//緯度,経度
-  population: 1050
-};
-citymap['海遊館'] = {
-  center: new google.maps.LatLng(34.654472, 135.428889),
-  population: 218
-};
-citymap['大阪市立科学館'] = {
-  center: new google.maps.LatLng(34.691306, 135.491583),
-  population: 38
-};
-citymap['交通科学博物館'] = {
-  center: new google.maps.LatLng(34.670715, 135.461895),
-  population: 28
-};
+for(var i=0; i<=result.length-1; i++){
+    citymap[i] = {
+        //緯度 lat, 経度 lng
+        center: new google.maps.LatLng(result[i].lat, result[i].lng),
+        population: result[i].pop
+    };
+}
 
 function start_func(){
     callPickActivity();
@@ -48,19 +36,16 @@ function imagePicked() {//写真を撮ってキャンバス上に描画
 
 // ( 1 )位置情報を取得します。
 function get_location(){
-	document.getElementById("area_name").innerHTML
-	= '位置情報取得します';
-	if (navigator.geolocation) {
-    // 現在の位置情報取得を実施 正常に位置情報が取得できると、
-    // successCallbackがコールバックされます。
-    navigator.geolocation.getCurrentPosition
-    (successCallback,errorCallback);
+  if (navigator.geolocation) {
+        // 現在の位置情報取得を実施 正常に位置情報が取得できると、
+        // successCallbackがコールバックされます。
+        navigator.geolocation.getCurrentPosition
+        (successCallback,errorCallback);
     } else {
-    	message = "本ブラウザではGeolocationが使えません";
-    	document.getElementById("area_name").innerHTML
-    	= message;
+        console.log("error")
     }
 }
+
 // ( 2 )位置情報が正常に取得されたら
 function successCallback(pos) {
 	var Potition_latitude = pos.coords.latitude; //緯度
@@ -71,29 +56,26 @@ function successCallback(pos) {
 }
 
 function errorCallback(error) {
-	message = "位置情報が許可されていません";
-	document.getElementById("area_name").innerHTML = message;
+  console.log("error");
 }
 
 
 
 // ( 3 )Google Map API を使い、地図を読み込み
 function initialize(x,y) {
-	document.getElementById("area_name").innerHTML
-	= 'google map情報を取得中';
 
     // Geolocationで取得した座標を代入
+    // デバッグのためUSJで固定
+    var myLatlng = new google.maps.LatLng(34.664722,135.433056);
     //var myLatlng = new google.maps.LatLng(x,y);
-    var myLatlng = new google.maps.LatLng(34.878025, 135.576926);
-    var distance = google.maps.geometry.spherical.computeDistanceBetween(citymap['総情'] ['center'], myLatlng);
+    var distance = google.maps.geometry.spherical.computeDistanceBetween(citymap[0].center, myLatlng);
 
     var point = 0;
     if(distance<50){
-    point = 100;
+      point = 100;
     }
-    console.log(point);
-     //alert(point);
-	document.getElementById("area_name").innerHTML = point;
+     alert(point);
+     document.getElementById("area_name").innerHTML = point;
 
 
 
