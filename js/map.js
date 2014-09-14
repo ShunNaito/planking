@@ -48,7 +48,7 @@ function initialize(x,y) {
 
     // Geolocationで取得した座標を代入
     // FirefoxOS端末及びシミュレータが現在地をただしくとれないため一時的に固定
-    var myLatlng = new google.maps.LatLng(34.878025, 135.576926);
+    var myLatlng = new google.maps.LatLng(34.706193, 135.494145);
     // var myLatlng = new google.maps.LatLng(x,y);
 
     var mapOptions = {

@@ -68,7 +68,7 @@ function initialize(x,y) {
 
     // Geolocationで取得した座標を代入
     // デバッグのためUSJで固定
-    var myLatlng = new google.maps.LatLng(34.878025, 135.576926);
+    var myLatlng = new google.maps.LatLng(34.706193, 135.494145);
     //var myLatlng = new google.maps.LatLng(x,y);
 
 	var min;
@@ -91,7 +91,7 @@ function initialize(x,y) {
 
 
     var point = 0;
-    if(distance<50){
+    if(distance<5000){
       point = 100;
     }
      document.getElementById("area_name").innerHTML = point;
