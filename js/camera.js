@@ -30,7 +30,7 @@ function imagePicked() {
     photo.onload = function() {
         var canvas = document.getElementById('canvassample');
         var context = canvas.getContext('2d');
-        context.drawImage(photo, 0, 0, 320, 480);
+        context.drawImage(photo, 0, 0, 480, 800);
     };
     get_location();//位置情報の取得
 }
@@ -69,10 +69,10 @@ function initialize(x,y) {
     // デバッグのためUSJで固定
     var myLatlng = new google.maps.LatLng(34.878025, 135.576926);
     //var myLatlng = new google.maps.LatLng(x,y);
-	
+
 	var min;
 	var count;
-	
+
 	for( var i = 0; i < citymap.length-1; i++){
 		var distance = google.maps.geometry.spherical.computeDistanceBetween(citymap[i].center, myLatlng);
 		if( i == 0 ){
@@ -85,9 +85,9 @@ function initialize(x,y) {
    		 	}
    		 }
    	}
-   		 
+
    		 alert(citymap[count].population);
-   		 
+
 
     var point = 0;
     if(distance<50){
