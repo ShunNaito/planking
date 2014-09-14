@@ -1,7 +1,7 @@
 function loadcsv2(url) {
     var httpObj = new XMLHttpRequest();
     httpObj.open('GET',url+"?"+(new Date()).getTime(),false);
-    // ?�ȍ~�̓L���b�V�����ꂽ�t�@�C���ł͂Ȃ��A����ǂݍ��ނ��߂̂���
+    // ?以降はキャッシュされたファイルではなく、毎回読み込むためのもの
     httpObj.send(null);
     var rows = httpObj.responseText.split("\r\n");
     var data = new Array();
@@ -13,7 +13,8 @@ function loadcsv2(url) {
         var lng = parseFloat(fields[0]);
         var lat = parseFloat(fields[1]);
         var pop = parseFloat(fields[2]);
-        data.push({'lat': lat, 'lng': lng, 'pop': pop});
+        var company = fields[3];
+        data.push({'lat': lat, 'lng': lng, 'pop': pop, 'company': company});
         // console.log(data[n-1]);
     }
     return data;

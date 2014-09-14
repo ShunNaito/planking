@@ -10,7 +10,8 @@ for(var i=0; i<=result.length-1; i++){
     citymap[i] = {
         //緯度 lat, 経度 lng
         center: new google.maps.LatLng(result[i].lat, result[i].lng),
-        population: result[i].pop
+        population: result[i].pop,
+        company: result[i].company
     };
 }
 
@@ -86,7 +87,7 @@ function initialize(x,y) {
    		 }
    	}
 
-   		 alert(citymap[count].population);
+   		 alert(citymap[count].company);
 
 
     var point = 0;

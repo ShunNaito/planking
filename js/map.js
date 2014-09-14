@@ -68,11 +68,17 @@ function initialize(x,y) {
     // citymapのそれぞれの値のための円を作図する
     // ノート: 人口に基づいてサークルのエリアをスケールする
     for (var city in citymap) {
+        // if(citymap[city].population > 1000){
+        //     var test = '#FFFF00'
+        // }else{
+        //     var test = '#FF0000'
+        // }
         var populationOptions = {
             strokeColor: '#FF0000',
             strokeOpacity: 0.8, //透明度
             strokeWeight: 2,
             fillColor: '#FF0000',
+            // fillColor: test,
             fillOpacity: 0.35,
             map: map,
             center: citymap[city].center,
