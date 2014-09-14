@@ -10,8 +10,8 @@ function loadcsv2(url) {
     for (n = 1; n < rows.length; n++) {
     	var fields = rows[n].split(",");
 
-        var lng = parseFloat(fields[0]);
-        var lat = parseFloat(fields[1]);
+        var lat = parseFloat(fields[0]);
+        var lng = parseFloat(fields[1]);
         var pop = parseFloat(fields[2]);
         var company = fields[3];
         data.push({'lat': lat, 'lng': lng, 'pop': pop, 'company': company});

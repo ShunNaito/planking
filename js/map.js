@@ -1,7 +1,7 @@
 var message;
 var cityCircle;
 //CSVのデータから緯度を取得する
-var result = loadcsv2('./csvdata/original_planking.csv');
+var result = loadcsv2('./csvdata/planking.csv');
 
 // 観光名所の位置情報と人気度
 var citymap = new Array();
